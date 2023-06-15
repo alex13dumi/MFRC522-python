@@ -50,7 +50,7 @@ class SimpleMFRC522:
         for block_num in self.BLOCK_ADDRS:
             block = self.READER.MFRC522_Read(block_num) 
             if block:
-            		data += block
+                data += block
         if data:
              text_read = ''.join(chr(i) for i in data)
     self.READER.MFRC522_StopCrypto1()
@@ -88,3 +88,9 @@ class SimpleMFRC522:
       for i in range(0, 5):
           n = n * 256 + uid[i]
       return n
+
+  def close(self):
+      self.READER.Close_MFRC522()
+  def ReadTemp(self):
+      val = self.READER.Read_MFRC522(self.READER.ErrorReg)
+      return val
