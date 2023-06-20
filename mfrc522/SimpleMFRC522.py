@@ -91,6 +91,7 @@ class SimpleMFRC522:
 
   def close(self):
       self.READER.Close_MFRC522()
+    
   def ReadTemp(self):
       val = self.READER.Read_MFRC522(self.READER.ErrorReg)
       return val
